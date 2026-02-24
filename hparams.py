@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import os, os.path as osp
 from typing import Any, ClassVar, Dict, List, Optional
 
@@ -88,12 +88,12 @@ class SVMParams:
 class Parameters:
     """base options."""
 
-    hparams       : Hparams         = Hparams()
-    data_param    : DatasetParams   = DatasetParams()
-    callback_param: CallBackParams  = CallBackParams()
-    train_param   : TrainParams     = TrainParams()
-    inference_param : InferenceParams = InferenceParams()
-    svm_params      : SVMParams = SVMParams()
+    hparams       : Hparams         = field(default_factory=Hparams)
+    data_param    : DatasetParams   = field(default_factory=DatasetParams)
+    callback_param: CallBackParams  = field(default_factory=CallBackParams)
+    train_param   : TrainParams     = field(default_factory=TrainParams)
+    inference_param : InferenceParams = field(default_factory=InferenceParams)
+    svm_params      : SVMParams = field(default_factory=SVMParams)
 
     @classmethod
     def parse(cls):
